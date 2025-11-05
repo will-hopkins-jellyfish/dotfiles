@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Handle git operations: stash uncommitted changes, pull master, switch to branch JFR-3617-split-abac-read-only-admins-policy",
+    "status": "completed",
+    "priority": "high",
+    "id": "git-ops"
+  },
+  {
+    "content": "Analyze current second-half policy structure and determine optimal split point",
+    "status": "completed",
+    "priority": "high",
+    "id": "analyze-policy"
+  },
+  {
+    "content": "Split abac-read-only-admin-second-half policy document into second-half and third-part",
+    "status": "completed",
+    "priority": "high",
+    "id": "split-policy-doc"
+  },
+  {
+    "content": "Create new abac-read-only-admin-third-part policy resource",
+    "status": "completed",
+    "priority": "high",
+    "id": "create-third-policy"
+  },
+  {
+    "content": "Add third-part policy attachment to permission sets",
+    "status": "completed",
+    "priority": "high",
+    "id": "update-permission-sets"
+  },
+  {
+    "content": "Verify all policies maintain read-only permissions and consistent ABAC conditions",
+    "status": "completed",
+    "priority": "medium",
+    "id": "verify-changes"
+  }
+]

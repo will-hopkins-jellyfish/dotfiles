@@ -1,0 +1,44 @@
+[
+  {
+    "content": "Search for existing S3 buckets and analyze naming conventions",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Find Lake Formation, Glue, and Athena infrastructure configurations",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Identify current data ingestion patterns and ETL processes",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Locate Lambda functions and ECS services for data processing",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "Examine S3 bucket organization and partitioning schemes",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Find existing Kinesis or streaming infrastructure",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  },
+  {
+    "content": "Analyze data pipeline monitoring and alerting setups",
+    "status": "completed",
+    "priority": "medium",
+    "id": "7"
+  }
+]

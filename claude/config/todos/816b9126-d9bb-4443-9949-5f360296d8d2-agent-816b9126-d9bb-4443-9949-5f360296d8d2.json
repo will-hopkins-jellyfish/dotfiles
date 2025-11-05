@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Fix the data duplication bug in prd_db_exports_etl.py",
+    "status": "completed",
+    "id": "fix-original-script"
+  },
+  {
+    "content": "Fix the data duplication bug in prd_db_exports_etl_optimized.py",
+    "status": "completed",
+    "id": "fix-optimized-script"
+  }
+]

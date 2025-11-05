@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Analyze current script structure and identify Delta Lake crawler requirements",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Modify crawler creation logic to support Delta Lake format specification",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Implement batching logic to limit crawlers to 100 file paths maximum",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Update crawler naming to handle multiple crawlers per database",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Identify bug in Delta Lake crawler creation",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Fix the crawler creation issue",
+    "status": "completed",
+    "id": "6"
+  },
+  {
+    "content": "Ensure all debugging uses logger instead of print",
+    "status": "completed",
+    "id": "7"
+  }
+]

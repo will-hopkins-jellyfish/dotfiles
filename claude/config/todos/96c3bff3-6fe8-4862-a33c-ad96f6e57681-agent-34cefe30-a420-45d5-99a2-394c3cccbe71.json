@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Search for JellyBase AWS SSO permission set definition",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Find IAM policies attached to JellyBase permission set",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Identify managed and inline policies granting S3 access",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Compare JellyBase with analytics admin ABAC permissions",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Find account assignments and user group assignments for JellyBase",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Analyze S3 permissions for jellyfish-prd-db-exports bucket access",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Check git status to see current changes",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Remove plan.out files from git tracking",
+    "status": "in_progress",
+    "id": "2"
+  },
+  {
+    "content": "Stage all remaining changes for commit",
+    "status": "pending",
+    "id": "3"
+  },
+  {
+    "content": "Create commit with descriptive message",
+    "status": "pending",
+    "id": "4"
+  },
+  {
+    "content": "Push branch to remote repository",
+    "status": "pending",
+    "id": "5"
+  }
+]

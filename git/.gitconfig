@@ -1,0 +1,22 @@
+[user]
+	email = will.hopkins@jellyfish.co
+	name = will-hopkins-jellyfish
+ 	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDtCwOjJo7YgUWfiRcsh4KFgGjGkaveGMFmLvI/u1qbPyBKkj6dhNnbFt0MJUAtoCUTHMnY/DuItYLTK3oIWCxRn9CKsDxZN/DCS8X9HVR3MASY2ORa2Goi8cBwmjpyd087qwRVFS6Eebkjc7xIxQdgUAGGTt79MTnuvnnjBpxQUJP4PneTQJar6bFDNIuj8FwsoHzFBZnjGJoWVKh5Hq61Pm4hJZlZjLprVbvS3KGF0+D60kv7/FH8UInfSyfJncE6Vx86xC0VH7ceGmJ+XY5GBNrtrW4zAXGnLAIM/m0Ub8pQlXxTvlbh6X5tOt651G2vRDxd+0/z4Y7ZmITfpcJCG5LmNVWpxiC9PxzeLolhS3kJOBAWgMmOMb/dFu2g3PGA1pOJLGU4G+6+6Lyb/TZ9AaodLCnNiIZbRoaWcX2BXCm0ShsksdZmneHdJMst4afdbkWfGd7qK9uPjTQFey/zzwU/A4cxbMcpOVLeCWuqp+gavohpplY4olDMpODwx/0lRwTWF6LWgTtk36uvJg+Avv/J9eDKT0ewsWkF+G7k9sSTdRgbNggLvF9DPltZpCOvLnTtfqD7C9NyVULDWx2R6icSJtLshGdwGmXCVsn8VlchGkV9w2K00a9njX/3NxU701E4dt0zLFldDwyvGADJ5/IqBqUDR2c8WzKto/snqw==
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
+[init]
+	debaultBranch = main

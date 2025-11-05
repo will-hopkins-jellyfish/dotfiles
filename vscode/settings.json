@@ -1,0 +1,38 @@
+{
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+    "remoteHub.commitDirectlyWarning": "off",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "git.confirmSync": false,
+    "circleci.hostUrl": "",
+    "githubPullRequests.fileListLayout": "tree",
+    "editor.rulers": [
+        80,
+        100,
+        120
+    ],
+    "vim.disableExtension": true,
+    "files.autoSave": "afterDelay",
+    "makefile.configureOnOpen": true,
+    "debugpy.showPythonInlineValues": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "cSpell.userWords": [
+        "aconn",
+        "acurs"
+    ],
+    "workbench.editor.highlightModifiedTabs": true,
+    "notebook.defaultFormatter": "ms-python.black-formatter",
+    "explorer.fileNesting.enabled": true,
+    "terraform.experimentalFeatures.validateOnSave": true,
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.statusBarItem.enabled": false,
+    "editor.fontSize": 14,
+    "chat.commandCenter.enabled": false,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "cody.suggestions.mode": "auto-edit",
+    "aws.telemetry": false,
+    "claudeCode.useTerminal": true,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1"
+}

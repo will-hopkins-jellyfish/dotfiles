@@ -1,0 +1,8 @@
+[
+  {
+    "content": "Update script to not retry 404 errors when fetching individual ticket metrics",
+    "status": "completed",
+    "priority": "medium",
+    "id": "1"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Find where psycopg2-binary version is specified",
+    "status": "completed",
+    "activeForm": "Finding where psycopg2-binary version is specified"
+  },
+  {
+    "content": "Check what the setup_python script does",
+    "status": "completed",
+    "activeForm": "Checking what the setup_python script does"
+  },
+  {
+    "content": "Install correct version (2.8.6) and fix libpq linking",
+    "status": "in_progress",
+    "activeForm": "Installing correct version and fixing libpq linking"
+  },
+  {
+    "content": "Verify the fix persists after running setup",
+    "status": "pending",
+    "activeForm": "Verifying the fix persists after running setup"
+  }
+]

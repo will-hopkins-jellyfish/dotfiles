@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "alwaysThinkingEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754086380139
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "printf '\\033[38;5;214m%s@%s\\033[0m \\033[34m%s\\033[0m' \"$(whoami)\" \"$(hostname -s)\" \"$(pwd)\""
+  }
+}

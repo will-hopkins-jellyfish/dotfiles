@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Create new branch from master starting with JFR-3696-",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Turn off enhanced_vpc_routing in Redshift configuration",
+    "status": "pending",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Add comment explaining it breaks Spectrum data access",
+    "status": "pending",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Commit the changes to the new branch",
+    "status": "pending",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "Push the branch to remote",
+    "status": "pending",
+    "priority": "high",
+    "id": "5"
+  }
+]

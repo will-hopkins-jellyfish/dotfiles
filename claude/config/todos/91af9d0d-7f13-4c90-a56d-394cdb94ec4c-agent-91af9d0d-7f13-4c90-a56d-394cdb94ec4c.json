@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Set up local Spark testing environment with minimal dependencies",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Create mock AWS services (S3, RDS, DynamoDB, Glue) for local testing",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Create test configuration with local paths instead of S3 paths",
+    "status": "pending",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Set up sample test data to validate ETL logic",
+    "status": "pending",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Create test runner script that can execute the ETL locally",
+    "status": "pending",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Modify script to use test S3 path (delta/test-2025-08-01) and limit to 20 tables",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "6"
+  }
+]

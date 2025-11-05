@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Check git log for commit message format examples",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Commit changes with proper ticket ID format",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Push commit to remote",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Create pull request",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  }
+]

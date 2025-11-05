@@ -1,0 +1,11 @@
+[default]
+region = us-east-1
+output = text
+sso_session = jelly-sso
+sso_account_id = 686150682967
+sso_role_name = JellyBase
+
+[sso-session jelly-sso]
+sso_start_url = https://d-906763d0b8.awsapps.com/start#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access

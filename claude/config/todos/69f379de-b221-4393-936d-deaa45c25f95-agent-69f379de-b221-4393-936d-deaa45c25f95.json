@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Examine EMR Serverless infrastructure configuration",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Check IAM roles and policies for EMR Serverless access",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Review security group and network configuration",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Analyze EMR Serverless application configuration",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Check actual EMR Serverless applications in AWS",
+    "status": "completed",
+    "priority": "high",
+    "id": "5"
+  }
+]

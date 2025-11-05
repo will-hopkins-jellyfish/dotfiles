@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Update write_table_to_delta to use upsert/merge instead of overwrite",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Implement merge logic with primary key detection",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Handle multipart table merging correctly",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Add fallback to overwrite for tables without suitable merge keys",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  }
+]

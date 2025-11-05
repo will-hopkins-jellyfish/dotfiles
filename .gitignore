@@ -1,0 +1,70 @@
+# Credentials and Secrets
+**/*credentials*
+**/*secret*
+**/*token*
+**/*password*
+.kube/
+.databrickscfg
+.aws/credentials
+.aws/sso/
+
+# SSH Keys
+.ssh/id_*
+.ssh/*.pem
+.ssh/*.key
+.ssh/*_rsa*
+.ssh/*_ed25519*
+.ssh/*_ecdsa*
+
+# History Files (may contain sensitive commands)
+*_history
+.bash_history
+.zsh_history
+.python_history
+.psql_history
+.lesshst
+.mysql_history
+
+# Environment Files
+.env
+.env.*
+!.env.example
+
+# System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor Backup Files
+*.swp
+*.swo
+*~
+.*.sw?
+
+# VS Code
+vscode/globalStorage/
+vscode/History/
+vscode/workspaceStorage/
+vscode/sync/
+
+# Cache directories
+.cache/
+cache/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Claude CLI sensitive files (may contain tokens in conversation history)
+claude/config/debug/
+claude/config/projects/
+claude/config/file-history/
+claude/config/history.jsonl
+claude/config/shell-snapshots/

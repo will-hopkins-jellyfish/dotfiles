@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Modify Tableau module to create both blue and green EC2 instances internally",
+    "status": "in_progress",
+    "id": "1"
+  },
+  {
+    "content": "Update main.tf to use single Tableau module instead of two separate modules",
+    "status": "pending",
+    "id": "2"
+  },
+  {
+    "content": "Test the simplified configuration",
+    "status": "pending",
+    "id": "3"
+  }
+]

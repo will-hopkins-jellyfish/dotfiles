@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Search for abac_analytics_admin role definitions in Terraform files",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Find Redshift serverless workgroup configurations",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Locate IAM policies granting Redshift permissions",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Find ABAC configurations and attribute-based policies",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Search for resource-based policies on Redshift resources",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Analyze findings and identify missing Redshift serverless permissions",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  }
+]

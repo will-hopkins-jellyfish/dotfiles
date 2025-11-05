@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Add fallback to Parquet when Delta Lake fails due to version incompatibility",
+    "status": "in_progress",
+    "id": "1"
+  },
+  {
+    "content": "Update error handling to gracefully handle Delta version issues",
+    "status": "pending",
+    "id": "2"
+  }
+]

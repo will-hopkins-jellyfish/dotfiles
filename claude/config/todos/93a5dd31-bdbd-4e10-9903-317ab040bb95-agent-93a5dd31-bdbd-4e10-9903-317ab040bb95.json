@@ -1,0 +1,14 @@
+[
+  {
+    "content": "Add lakeformation:* permissions to abac-analytics policy",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Add lakeformation read permissions to abac-read-only-admin policies",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  }
+]

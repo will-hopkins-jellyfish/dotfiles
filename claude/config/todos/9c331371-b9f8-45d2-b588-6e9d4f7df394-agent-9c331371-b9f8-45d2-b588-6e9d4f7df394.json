@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Check git status and diff to understand current changes",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Review recent commit messages for style consistency",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Add modified files to staging area",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Create commit with descriptive message including Claude Code attribution",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Push branch to remote repository",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Create pull request with test log link in description",
+    "status": "completed",
+    "id": "6"
+  }
+]

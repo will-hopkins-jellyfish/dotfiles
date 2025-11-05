@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Add deployment_type variable to tableau module",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update main.tf to pass deployment_type to each module",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Refactor AMI selection to use deployment_type instead of env_name",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Update userdata script selection logic",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Update resource naming to use deployment_type",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Make target group attachments conditional to support stopping inactive instances",
+    "status": "completed",
+    "id": "6"
+  }
+]

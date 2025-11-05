@@ -1,0 +1,11 @@
+{
+	"inputs": [
+		{
+			"id": "github_token",
+			"type": "promptString",
+			"description": "GitHub Personal Access Token",
+			"password": true
+		}
+	],
+	"servers": {}
+}

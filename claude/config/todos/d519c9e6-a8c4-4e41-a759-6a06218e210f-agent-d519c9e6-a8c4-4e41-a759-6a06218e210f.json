@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Check SageMaker execution role IAM permissions for EMR Serverless",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Verify EMR Serverless job execution role permissions",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Check network connectivity and security groups",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Review SageMaker Studio analytics extension configuration",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  }
+]

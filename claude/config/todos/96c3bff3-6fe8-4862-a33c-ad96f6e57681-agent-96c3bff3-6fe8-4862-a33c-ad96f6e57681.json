@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Analyze current data lake infrastructure and S3 bucket organization",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Design Kafka consumer architecture (Lambda vs ECS vs Kinesis)",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Plan data lake schema and partitioning strategy",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Create Terraform module for Kafka to data lake pipeline",
+    "status": "pending",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "Add IAM roles and permissions for data lake access",
+    "status": "pending",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Configure monitoring and alerting for the pipeline",
+    "status": "pending",
+    "priority": "low",
+    "id": "6"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "content": "Create dotfiles directory structure",
+    "status": "completed",
+    "activeForm": "Creating dotfiles directory structure"
+  },
+  {
+    "content": "Create comprehensive .gitignore for security",
+    "status": "completed",
+    "activeForm": "Creating comprehensive .gitignore for security"
+  },
+  {
+    "content": "Copy shell configurations (zsh, bash)",
+    "status": "completed",
+    "activeForm": "Copying shell configurations (zsh, bash)"
+  },
+  {
+    "content": "Copy vim and neovim configs",
+    "status": "completed",
+    "activeForm": "Copying vim and neovim configs"
+  },
+  {
+    "content": "Copy editor configs (Zed, VS Code)",
+    "status": "completed",
+    "activeForm": "Copying editor configs (Zed, VS Code)"
+  },
+  {
+    "content": "Copy terminal configs (zellij, ghostty, kitty)",
+    "status": "completed",
+    "activeForm": "Copying terminal configs (zellij, ghostty, kitty)"
+  },
+  {
+    "content": "Copy git and GitHub CLI configs",
+    "status": "completed",
+    "activeForm": "Copying git and GitHub CLI configs"
+  },
+  {
+    "content": "Copy Claude and other tool configs",
+    "status": "in_progress",
+    "activeForm": "Copying Claude and other tool configs"
+  },
+  {
+    "content": "Copy safe AWS and cloud configs",
+    "status": "pending",
+    "activeForm": "Copying safe AWS and cloud configs"
+  },
+  {
+    "content": "Create install script with symlinks",
+    "status": "pending",
+    "activeForm": "Creating install script with symlinks"
+  },
+  {
+    "content": "Create README with documentation",
+    "status": "pending",
+    "activeForm": "Creating README with documentation"
+  },
+  {
+    "content": "Initialize git repo and make initial commit",
+    "status": "pending",
+    "activeForm": "Initializing git repo and making initial commit"
+  }
+]

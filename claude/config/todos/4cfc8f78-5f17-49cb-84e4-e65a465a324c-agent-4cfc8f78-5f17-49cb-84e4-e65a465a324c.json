@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Check git status and commit history",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Get system clipboard contents for PR plan section",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Create pull request with proper description",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  }
+]

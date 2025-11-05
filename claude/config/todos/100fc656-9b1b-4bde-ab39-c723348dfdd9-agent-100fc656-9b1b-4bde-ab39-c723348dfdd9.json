@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Check environment-specific SageMaker IAM configuration",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Move Redshift Serverless policy to environment-specific file",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Remove policy from module file",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Attach policy to correct role in environment",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  }
+]

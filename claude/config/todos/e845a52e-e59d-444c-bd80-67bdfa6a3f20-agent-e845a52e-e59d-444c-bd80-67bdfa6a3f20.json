@@ -1,0 +1,14 @@
+[
+  {
+    "content": "Replace Delta Lake writes with Parquet writes for temporary testing",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Remove Delta-specific logic and use simple Parquet format",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  }
+]
