@@ -51,6 +51,12 @@ vscode/History/
 vscode/workspaceStorage/
 vscode/sync/
 
+# Vim
+vim/.vim/.netrwhist
+
+# Zed transient data
+zed/prompts/prompts-library-db.0.mdb/
+
 # Cache directories
 .cache/
 cache/
@@ -68,3 +74,13 @@ claude/config/projects/
 claude/config/file-history/
 claude/config/history.jsonl
 claude/config/shell-snapshots/
+claude/config/todos/
+claude/config/tasks/
+claude/config/plans/
+claude/config/paste-cache/
+claude/config/stats-cache.json
+claude/config/telemetry/
+claude/config/plugins/
+claude/config/settings.json.backup.*
+claude/config/ide/
+claude/config/statsig/
