@@ -424,11 +424,11 @@ export CLAUDE_CODE_USE_BEDROCK=1
 # Without this, every turn re-pays full input tokens against jf-localdev-* profiles.
 export AWS_BEDROCK_FORCE_CACHE=1
 # The anthropic model will occasionally change. Check this page every now and then!
-export ANTHROPIC_DEFAULT_OPUS_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/1nil8tuydhgz
+export ANTHROPIC_DEFAULT_OPUS_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/efw9phu18v5o
 export ANTHROPIC_DEFAULT_SONNET_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/5siz04xlqq9g
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/vgz4zbsrb75u
 
 # Launch the pi coding agent against a jf-localdev-* application inference profile
-# (currently claude-opus-4-7 global). Subagents have their own model config in
+# (currently claude-opus-4-8 global). Subagents have their own model config in
 # ~/.pi/agent/agents/*.md (see pi/agent/agents/ in this dotfiles repo).
-alias newpi='AWS_PROFILE=default pi --provider amazon-bedrock --model arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/bneefeajud0j'
+alias newpi='AWS_PROFILE=default pi --provider amazon-bedrock --model arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/efw9phu18v5o'
