@@ -105,6 +105,23 @@ if [ -d "$DOTFILES_DIR/rectangle-pro" ]; then
 fi
 
 echo ""
+echo "🤖 Setting up pi coding agent harness..."
+# pi looks for subagent definitions under ~/.pi/agent/agents/. Symlink each agent
+# file individually so a `pi update` (which can replace files in this directory)
+# only ever touches its own files, never our dotfiles content.
+for agent_file in "$DOTFILES_DIR"/pi/agent/agents/*.md; do
+    if [ -f "$agent_file" ]; then
+        create_symlink "$agent_file" "$HOME/.pi/agent/agents/$(basename "$agent_file")"
+    fi
+done
+
+echo ""
+echo "📜 Setting up agent context files (AGENTS.md, USER.md, MODEL_ROUTING.md)..."
+create_symlink "$DOTFILES_DIR/AGENTS.md" "$HOME/AGENTS.md"
+create_symlink "$DOTFILES_DIR/USER.md" "$HOME/USER.md"
+create_symlink "$DOTFILES_DIR/MODEL_ROUTING.md" "$HOME/MODEL_ROUTING.md"
+
+echo ""
 echo "✅ Dotfiles installation complete!"
 echo ""
 if [ -d "$BACKUP_DIR" ]; then

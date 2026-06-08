@@ -23,6 +23,8 @@ My personal configuration files for development tools and environments.
 ### Tools
 - **Git** - Global git configuration and GitHub CLI settings
 - **Claude** - Claude CLI configuration and custom settings
+- **pi** - [pi coding agent](https://www.npmjs.com/package/@earendil-works/pi-coding-agent) subagent definitions (planner / reviewer / worker / scout) wired to `jf-localdev-*` Bedrock application inference profiles for cost attribution
+- **Agent context** - `AGENTS.md`, `USER.md`, and `MODEL_ROUTING.md` symlinked into `$HOME` so coding agents (pi, Claude Code, etc.) pick up consistent instructions
 - **AWS** - AWS CLI configuration (regions, SSO settings)
 - **SSH** - SSH client configuration
 - **Keyboard Maestro** - Custom macros and automation
@@ -140,6 +142,11 @@ dotfiles/
 │   └── kitty/
 ├── git/                # Git and GitHub CLI
 ├── claude/             # Claude CLI
+├── pi/                 # pi coding agent subagent definitions
+│   └── agent/agents/   # planner, reviewer, worker, scout (symlinked into ~/.pi/agent/agents/)
+├── AGENTS.md           # Top-level agent instructions (symlinked to ~/AGENTS.md)
+├── USER.md             # Personal/professional context for agents (symlinked to ~/USER.md)
+├── MODEL_ROUTING.md    # Which model tier to use for which agent role (symlinked to ~/MODEL_ROUTING.md)
 ├── aws/                # AWS CLI config
 ├── ssh/                # SSH config
 ├── keyboard-maestro/   # Keyboard Maestro macros

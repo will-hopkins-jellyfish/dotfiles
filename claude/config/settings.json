@@ -1,11 +1,39 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "alwaysThinkingEnabled": false,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754086380139
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/willhopkins/code/jfr-assistant-hooks/log-usage.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/willhopkins/code/jfr-assistant-hooks/log-usage.sh"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
-    "command": "printf '\\033[38;5;214m%s@%s\\033[0m \\033[34m%s\\033[0m' \"$(whoami)\" \"$(hostname -s)\" \"$(pwd)\""
+    "command": "printf '\\033[38;5;214m%s@%s\\033[0m \\033[34m%s\\033[0m \\033[32m%s\\033[0m' \"$(whoami)\" \"$(hostname -s)\" \"$(pwd)\" \"$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')\""
+  },
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754086380139
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   }
 }

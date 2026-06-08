@@ -65,7 +65,7 @@ ZSH_THEME="alanpeabody"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
+
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
@@ -118,12 +118,16 @@ export TEAM_STAGE_ENV="http://jf-stg-sandbox-ro-1-db.crxkcfv1g61a.us-east-1.rds.
 export PATH="$PATH:/Users/willhopkins/.local/bin"
 
 jelly-ssh () {
-        pushd ~-jellyfish
-        scripts/ssh -k ~/.ssh/id_ed25519 "$@"
-        popd
+  pushd ~-jellyfish
+  scripts/ssh -k ~/.ssh/id_ed25519 "$@"
+  popd
 }
 
-alias sso='aws sso logout && aws sso login'
+unalias sso 2>/dev/null || true
+sso () {
+	local profile="${1:-default}"
+	aws sso logout --profile "$profile" && aws sso login --profile "$profile"
+}
 alias dbpw='aws secretsmanager get-secret-value --secret-id $DB_CREDS_SECRET_ARN --output json'
 alias tfshow='terraform show -no-color plan.out | pbcopy'
 
@@ -133,3 +137,298 @@ eval "$(pyenv init -)"
 
 # SECURITY: Set your GitHub token manually or use gh CLI auth
 # export GITHUB_AUTH_TOKEN=your_token_here
+
+# Steve's worktree functions
+# create work tree
+# use it like this: $ wt feature-branch-name
+wt() {
+	# exit immediately on error
+	# set -e
+
+	# exit function immediately on error
+	setopt LOCAL_OPTIONS ERR_EXIT
+
+	# get the current git project directory (must be inside a git repo)
+	local project_dir=$(git rev-parse --show-toplevel)
+
+	# get the base name of the current porject folder
+	local project_name=$(basename "$project_dir")
+
+	# get the desired feature/branch name from the first argument
+	local feature_branch_name="$1"
+
+	# fail fast if no feature/branch name was provided
+	if [ -z "$feature_branch_name" ]; then 
+		echo "X no <feature_branch_name> provided"
+		return 0
+	fi
+
+	# check if branch already exists
+	if git -C "$project_dir" show-ref --verify --quiet "refs/heads/$feature_branch_name"; then
+		echo "X branch '$feature_branch_name' already exists"
+		return 0
+	fi
+
+	# define the parent folder where all worktrees go, beside the main repo
+	local worktree_parent="$(dirname "$project_dir")/${project_name}-worktrees"
+
+	# define the full path for the new worktree folder
+	local worktree_path="${worktree_parent}/${feature_branch_name}"
+
+	# create the parent worktree folder if it doesn't exist
+	mkdir -p "$worktree_parent"
+
+	# create the worktree and branch
+	git -C "$project_dir" worktree add -b "$feature_branch_name" "$worktree_path"
+
+	# list of files to copy over to worktree
+	local untracked_files=(Claude.md .secrets.yaml .npmrc .envrc)
+
+	# copy some untracked files over to new worktree folder
+	for f in "${untracked_files[@]}"; do
+		if [ -f "$project_dir/$f" ]; then
+			cp "$project_dir/$f" "$worktree_path/$f"
+			echo "Copied file $f into worktree"
+		fi
+	done
+
+	 # conditionally copy db_url if it exists (for remote db connections)
+	if [ -f "$project_dir/jellyfish/settings/db_url" ]; then
+		mkdir -p "$worktree_path/jellyfish/settings"
+		cp "$project_dir/jellyfish/settings/db_url" "$worktree_path/jellyfish/settings/db_url"
+		echo "Copied jellyfish/settings/db_url into worktree (remote db config)"
+	fi
+
+	# list of hidden folders to copy over
+	local hidden_dir=(.claude)
+
+	# copy some untracked files over to new worktree folder
+	for dir in "${hidden_dir[@]}"; do
+		if [ -d "$project_dir/$dir" ]; then
+			cp -R "$project_dir/$dir" "$worktree_path/$dir"
+			echo "Copied directory $dir into worktree"
+		fi
+	done
+
+	# open a new tab, and cd into the  new worktree
+	runInNewTab "cd $worktree_path && direnv allow && echo '\n✓ Direnv allowed. \nEnvironment loaded. \nRun: pdm install && nvm use && npm ci'"
+}
+
+
+# alist to list work trees 
+alias wt_list="git worktree list"
+
+
+# cleanup work tree(s) [note: does not clean up branch, just worktree]
+# can be used to clean up a single worktree or all worktrees 
+# $ wt_delete feature-branch-name
+# $ wt_delete all
+# $ wt_delete --force feature-branch-name
+# $ wt_delete --force all
+wt_delete() {
+    # DON'T use ERR_EXIT - handle errors explicitly instead
+    # This prevents the shell from terminating on git errors
+
+    # get the current git project directory (must be inside a git repo)
+    local project_dir=$(git rev-parse --show-toplevel)
+
+    # get the base name of the current porject folder
+    local project_name=$(basename "$project_dir")
+
+    # parse arguments for --force flag
+    local force_flag=""
+    local first_argument=""
+
+    if [[ "$1" == "--force" ]]; then
+        force_flag="--force"
+        first_argument="$2"
+    else
+        first_argument="$1"
+    fi
+
+    # fail fast if no feature/branch name was provided
+    if [ -z "$first_argument" ]; then
+        echo "X no argument provided"
+        return 0
+    fi
+
+    # get all worktrees as an ARRAY using zsh globbing
+    local all_worktree_names=()
+    for dir in ${project_dir}-worktrees/*(N:t); do
+        all_worktree_names+=($dir)
+        # echo "$all_worktree_names" -- debug, see worktrees array as it's being built
+    done
+
+    # determine which worktrees to cleanup
+    if [[ "$first_argument" == "all" ]]; then
+        echo "cleaning up all worktrees"
+          # get worktree directories
+        local worktrees_to_cleanup=($all_worktree_names)
+    else
+        # check the provided worktree is a valid one
+        if [[ ${all_worktree_names[(ie)$first_argument]} -le ${#all_worktree_names} ]]; then
+            local worktrees_to_cleanup=($first_argument)
+        else
+            echo "X provided worktree '$first_argument' not in list of all worktrees:"
+            printf '  %s\n' "* ${all_worktree_names[@]}"
+            return 0
+        fi
+    fi
+
+    # give user feedback on what's about to happen
+    echo "about to cleanup worktrees:"
+    printf '  * %s\n' "${worktrees_to_cleanup[@]}"
+    [[ -n "$force_flag" ]] && echo "(using --force)"
+
+    # remove worktrees with error handling
+    local failed_removals=()
+    for wt in "${worktrees_to_cleanup[@]}"; do
+        if git worktree remove $force_flag "$wt" 2>/dev/null; then
+            echo "✓ removed worktree $wt"
+        else
+            echo "✗ failed to remove worktree $wt (may have uncommitted changes)"
+            failed_removals+=($wt)
+        fi
+    done
+
+    # Report any failures
+    if [[ ${#failed_removals[@]} -gt 0 ]]; then
+        echo "\nFailed to remove ${#failed_removals[@]} worktree(s):"
+        printf '  * %s\n' "${failed_removals[@]}"
+        echo "Use 'git worktree remove --force <name>' to force removal"
+        return 1
+    fi
+
+    echo "\n✓ Successfully cleaned up all worktrees"
+}
+
+
+# move current branch to a worktree
+# use it like this: $ wt_move
+wt_move() {
+    # DON'T use ERR_EXIT - handle errors explicitly instead
+
+    # get the current git project directory (must be inside a git repo)
+    local project_dir=$(git rev-parse --show-toplevel)
+    if [ $? -ne 0 ]; then
+        echo "X not in a git repository"
+        return 1
+    fi
+
+    # get the base name of the current project folder
+    local project_name=$(basename "$project_dir")
+
+    # get the current branch name
+    local current_branch=$(git branch --show-current)
+
+    # fail fast if on develop already
+    if [ "$current_branch" = "develop" ]; then
+        echo "X already on develop, nothing to move"
+        return 0
+    fi
+
+    # fail fast if in detached HEAD state
+    if [ -z "$current_branch" ]; then
+        echo "X cannot move detached HEAD state"
+        return 0
+    fi
+
+    # define the parent folder where all worktrees go
+    local worktree_parent="$(dirname "$project_dir")/${project_name}-worktrees"
+
+    # define the full path for the new worktree folder
+    local worktree_path="${worktree_parent}/${current_branch}"
+
+    # check if worktree already exists
+    if [ -d "$worktree_path" ]; then
+        echo "X worktree for branch '$current_branch' already exists at:"
+        echo "  $worktree_path"
+        echo "Either work from that worktree, or delete it and try again"
+        return 0
+    fi
+
+    # check for uncommitted changes
+    local git_status=$(git status --porcelain)
+    if [ -n "$git_status" ]; then
+        echo "Uncommitted changes detected:"
+        echo ""
+        git status
+        echo ""
+        echo -n "These changes will be lost. Continue? (y/N): "
+        read response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo "✓ Cancelled. Commit or stash your changes, then try again."
+            return 0
+        fi
+    fi
+
+    # create the parent worktree folder if it doesn't exist
+    mkdir -p "$worktree_parent"
+
+    # switch main repo to develop FIRST (this is the key difference)
+    echo "Switching main repo to develop..."
+    git checkout develop 2>/dev/null
+    if [ $? -ne 0 ]; then
+        echo "X failed to checkout develop"
+        return 1
+    fi
+
+    # NOW create the worktree (branch already exists, so no -b flag)
+    echo "Creating worktree for '$current_branch'..."
+    git worktree add "$worktree_path" "$current_branch" 2>/dev/null
+    if [ $? -ne 0 ]; then
+        echo "X failed to create worktree"
+        return 1
+    fi
+
+    # list of files to copy over to worktree
+    local untracked_files=(Claude.md .secrets.yaml .npmrc .envrc)
+
+    # copy some untracked files over to new worktree folder
+    for f in "${untracked_files[@]}"; do
+        if [ -f "$project_dir/$f" ]; then
+            cp "$project_dir/$f" "$worktree_path/$f"
+            echo "Copied file $f into worktree"
+        fi
+    done
+
+    # conditionally copy db_url if it exists (for remote db connections)
+    if [ -f "$project_dir/jellyfish/settings/db_url" ]; then
+        mkdir -p "$worktree_path/jellyfish/settings"
+        cp "$project_dir/jellyfish/settings/db_url" "$worktree_path/jellyfish/settings/db_url"
+        echo "Copied jellyfish/settings/db_url into worktree (remote db config)"
+    fi
+
+    # list of hidden folders to copy over
+    local hidden_dir=(.claude)
+
+    # copy some untracked files over to new worktree folder
+    for dir in "${hidden_dir[@]}"; do
+        if [ -d "$project_dir/$dir" ]; then
+            cp -R "$project_dir/$dir" "$worktree_path/$dir"
+            echo "Copied directory $dir into worktree"
+        fi
+    done
+
+    # open a new tab, and cd into the new worktree
+    runInNewTab "cd $worktree_path && direnv allow && echo '\n✓ Direnv allowed. \nEnvironment loaded. \nRun: pdm install && nvm
+ use && npm ci'"
+
+    echo "✓ Moved branch '$current_branch' to worktree"
+    echo "✓ Main repo switched to develop"
+}
+
+export CLAUDE_CODE_USE_BEDROCK=1
+# Force prompt caching for application inference profile ARNs (whose ARNs don't
+# expose the model name, so pi/Claude Code can't auto-detect cacheability).
+# Without this, every turn re-pays full input tokens against jf-localdev-* profiles.
+export AWS_BEDROCK_FORCE_CACHE=1
+# The anthropic model will occasionally change. Check this page every now and then!
+export ANTHROPIC_DEFAULT_OPUS_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/efw9phu18v5o
+export ANTHROPIC_DEFAULT_SONNET_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/5siz04xlqq9g
+export ANTHROPIC_DEFAULT_HAIKU_MODEL=arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/vgz4zbsrb75u
+
+# Launch the pi coding agent against a jf-localdev-* application inference profile
+# (currently claude-opus-4-8 global). Subagents have their own model config in
+# ~/.pi/agent/agents/*.md (see pi/agent/agents/ in this dotfiles repo).
+alias newpi='AWS_PROFILE=default pi --provider amazon-bedrock --model arn:aws:bedrock:us-east-1:686150682967:application-inference-profile/efw9phu18v5o'

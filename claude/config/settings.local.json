@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(aws logs describe-log-groups:*)",
+      "Bash(aws sts get-caller-identity:*)",
+      "Bash(aws dms describe-replication-instances:*)",
+      "Bash(aws dms describe-replication-tasks:*)",
+      "Bash(aws logs filter-log-events:*)",
+      "Bash(aws logs describe-log-streams:*)",
+      "Bash(aws logs get-log-events:*)",
+      "Bash(aws dms describe-endpoints:*)",
+      "Bash(aws rds describe-db-instances:*)",
+      "Bash(aws rds describe-db-parameters:*)",
+      "Bash(git ls-tree:*)",
+      "WebSearch",
+      "Bash(aws dms describe-table-statistics:*)",
+      "Bash(aws rds describe-events:*)",
+      "WebFetch(domain:aws.amazon.com)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)"
+    ]
+  }
+}
