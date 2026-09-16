@@ -1,0 +1,76 @@
+{
+  "org": "Jellyfish-AI",
+
+  "_comment_tiers": "Tier 1 = my team, Tier 2 = needs me specifically, Tier 3 = Core Foundations, Tier 4 = anything else where I'm a requested reviewer. A PR lands in the LOWEST-numbered tier it matches.",
+
+  "tiers": {
+    "1": {
+      "label": "Data Foundations",
+      "github_team": "data-foundations",
+      "ticket_prefixes": ["DF"]
+    },
+    "3": {
+      "label": "Core Foundations",
+      "github_team": "core-foundations",
+      "ticket_prefixes": ["CF"]
+    }
+  },
+
+  "_comment_expertise": "Tier 2 signal. 'repos' match on repo name alone. 'scoped_repos' are large shared repos where a repo match alone is meaningless - they also need a keyword hit in the title or branch.",
+
+  "expertise": {
+    "repos": [
+      "cf-openmetadata",
+      "cf-tf-identity",
+      "analytics-dbt",
+      "jf_databricks",
+      "jf_databricks_analytics",
+      "webhook-ingest-api"
+    ],
+    "scoped_repos": [
+      "infra",
+      "jellyfish",
+      "datascience"
+    ],
+    "keywords": [
+      "openmetadata", "metadata", "lineage", "collate",
+      "databricks", "unity catalog", "unity_catalog", "dbt", "delta",
+      "rds", "aurora", "postgres", "pg_", "iam auth", "rds_iam", "rds-db",
+      "airflow", "mwaa", "openlineage",
+      "kargo", "dab", "asset bundle",
+      "analytics_prd_ws", "analytics_dev_ws", "prd_ws",
+      "segment", "warehouse", "catalog", "ingestion"
+    ]
+  },
+
+  "_comment_filters": "Hard excludes. A PR matching any of these never surfaces.",
+
+  "filters": {
+    "exclude_drafts": true,
+    "abandoned_after_quiet_days": 120
+  },
+
+  "_comment_weights": "Within-tier scoring only. Tier always dominates the sort order.",
+
+  "weights": {
+    "requested_me_directly": 40,
+    "mentioned_me": 30,
+    "rereview_after_my_comments": 35,
+    "expertise_match": 15,
+    "requested_my_team": 8,
+    "ci_success": 10,
+    "ci_failure": -20,
+    "ci_pending": -3,
+    "conflicting": -25,
+    "changes_requested": -30,
+    "already_approved_by_others": -15,
+    "age_days_cap": 30,
+    "age_per_day": 0.8,
+    "quiet_penalty_after_days": 45,
+    "quiet_penalty": -20,
+    "small_pr_bonus": 8,
+    "small_pr_max_lines": 100,
+    "huge_pr_penalty": -8,
+    "huge_pr_min_lines": 1500
+  }
+}
